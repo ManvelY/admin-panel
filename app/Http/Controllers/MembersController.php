@@ -9,9 +9,7 @@ class MembersController extends Controller
 {
     public function index() {
 
-        $members = Member::select('id','email')->get();
-
-        dd($members);
+        $members = Member::all();
 
         return view("members.index",["members"=> $members]);
     }
