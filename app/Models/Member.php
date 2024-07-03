@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Member extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        "firstName",
+        "lastName",
+        "email",
+        "avatar",
+        "position",
+        "salary",
+        "gender",
+        "age",
+        "startedAt",
+        "slug",
+    ];
 }
