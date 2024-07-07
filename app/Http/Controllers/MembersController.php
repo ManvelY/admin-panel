@@ -23,8 +23,12 @@ class MembersController extends Controller
         return view("members.create");
     }
 
-    public function delete($id) {
+    public function destroy($id) {
+        $member = Member::findOrFail($id);
 
+        $member->delete();
+
+        return redirect()->route("members_index");
     }
 
     public function store(MemberCreateRequest $request) {
@@ -42,10 +46,17 @@ class MembersController extends Controller
     }
 
     public function edit($id) {
+        $member = Member::findOrFail($id);
 
+        return view("members.edit",["member"=> $member]);
     }
 
-    public function update(Request $request, $id) {
+    public function update(MemberCreateRequest $request, $id) {
 
+        $inputs = $request -> validated();
+        $member = Member::findOrFail($id);
+        $member->update($inputs);
+
+        return redirect()-> route("members_index");
     }
 }
