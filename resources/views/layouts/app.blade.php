@@ -18,6 +18,29 @@
             bottom: 20px;
             left: 45%;
         }
+        body {
+            background: #474e55;
+            color: white;
+        }
+        .bg-white {
+            background-color: #3f454b!important
+        }
+        .text-black {
+            color:white!important;
+        }
+        .navbar-brand {
+            color:white;
+        }
+        .nav-link {
+            color:white;
+        }
+        .card {
+            background: #50575f!important;
+            color: white!important;
+        }
+        .form-control {
+            background: #bec0c3;
+        }
     </style>
     <style>
     /* Custom styles for sidebar */
@@ -38,7 +61,6 @@
 
     .sidebar.collapsed {
         width: 50px; /* Collapsed sidebar width */
-        overflow-x: hidden;
     }
 
     .sidebar .avatar {
@@ -82,11 +104,10 @@
 
     .sidebar-toggle {
         position: absolute;
-        top: 10px;
+        top: 0;
         right: -20px;
         background-color: #343a40;
         border: none;
-        border-top-right-radius: 10px;
         border-bottom-right-radius: 10px;
         color: #fff;
         padding: 10px;
@@ -162,11 +183,13 @@
             </div>
         </div>
         </nav>
+                @if(Auth::user())
         <div class="sidebar" id="sidebar">
         <div class="text-center" id="sidebar-content">
         <div class="avatar">
         <img src="https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png" alt="User Avatar">
         </div>
+
         <h5>Name: {{Auth::user()->name}}</h5>
         <p class="capitiliaze">Role: {{Auth::user()->role}}</p>
         </div>
@@ -174,6 +197,7 @@
         <i class="fas fa-bars"></i>
         </button>
         </div>
+        @endif()
         <main class="py-4">
         @yield('content')
         </main>
